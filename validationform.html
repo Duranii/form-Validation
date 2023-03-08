@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Validation Form</title>
+</head>
+<body class="bg-lime-100">
+    <h1 class="text-center font-bold text-3xl pb-8 pt-24">Form Validation</h1>
+    <div class="flex flex-col justify-center mx-[20%] shadow-2xl border-[1px] border-neutral-500 rounded-lg bg-white">
+        <div class="mx-10 pt-12 pb-12">
+            <form action="" name="myform" onsubmit="return validationForm()" onsubmit="return matchpass()" method="post">
+                <div>
+                   <span class="font-semibold text-lg">Full Name:</span>  <input class="ml-[90px] border-lime-100 shadow-lg pl-4 border-[1px] rounded-md w-[50%] h-10" type="text" name="fname"><span onsubmit="return itserror()" name="error" class="text-red-600"></span>
+                </div>
+
+                <div class="pt-6">
+                    <span class="font-semibold text-lg">Email:</span>  <input class="ml-32 border-lime-100 shadow-lg border-[1px] pl-4 rounded-md w-[50%] h-10" type="Email" name="femail"><span onsubmit="return itserror()" name="error" class=""></span>
+                 </div>
+
+                 <div class="pt-6" id="password">
+                    <span class="font-semibold text-lg">Password:</span>  <input class="ml-24 border-lime-100 shadow-lg border-[1px] pl-4 rounded-md w-[50%] h-10" type="Password" name="fpassword"><span onsubmit="return itserror()" name="error" class=""></span>
+                 </div>
+
+                 <div class="pt-6 cpassword">
+                    <span class="font-semibold text-lg">Confirm Password:</span>  <input class="ml-6 border-lime-100 shadow-lg border-[1px] pl-4 rounded-md w-[50%] h-10" type="Password" name="fcpassword"><span onsubmit="return itserror()" name="error" class=""></span>
+                 </div>
+                 
+                 <span class="flex justify-center pt-6">
+                 <button type="submit" onclick="myFunction" value="submit" class="w-[20%] h-10 text-white rounded-md font-semibold shadow-lg bg-lime-900">Submit</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script>   
+
+function validationForm(){  
+    var fname = document.myform.fname.value;
+    var femail = document.myform.femail.value;
+    var fpassword = document.myform.fpassword.value;
+    var fcpassword = document.myform.fcpassword.value;
+    var firstpassword=document.myform.fpassword.value;  
+    var secondpassword=document.myform.fcpassword.value;  
+
+    if (fname.length <= 0) {  
+        alert("Name is required");  
+        fname.focus();  
+        return false;  
+    }
+ 
+    else if (femail.length <= 0) {  
+        alert("Email is required");  
+        femail.focus();  
+        return false;  
+    } 
+  
+    else if (fpassword.length <= 0) {  
+        alert("Password is required");  
+        fpassword.focus();  
+        return false;  
+    }
+
+    else if(fpassword.length<6){  
+        alert("Password must be at least 6 characters long.");  
+        return false;  
+    } 
+      
+    else if (fcpassword.length <= 0) {  
+        alert("Confirm Password is required");  
+        fcpassword.focus();  
+        return false;  
+    }
+    
+    if(firstpassword==secondpassword){  
+        return true;  
+    }
+
+    else{  
+        alert("password must be same!");  
+        return false;  
+    }
+}  
+</script>
+</html>
